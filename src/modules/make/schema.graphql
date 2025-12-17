@@ -1,0 +1,32 @@
+type Make {
+  id: ID!
+  makeId:       String!
+  makeName:     String!
+  vehicleTypes: [VehicleType!]!
+}
+
+input NewMake {
+  makeId: String!
+  makeName: String!
+}
+
+input UpdateMake {
+  id: ID!
+  makeId: String
+  makeName: String
+}
+
+type Query {
+  makes: [Make!]!
+  make(id: ID!): Make
+}
+
+type Mutation {
+  createMake(input: NewMake!): Make!
+  updateMake(input: UpdateMake!): Make
+  deleteMake(id: ID!): Make
+}
+
+type Subscription {
+  makeCreated: Make
+}
