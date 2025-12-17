@@ -1,0 +1,36 @@
+type VehicleType {
+  id: ID!
+  vehicleTypeId:    String!     
+  vehicleTypeName:  String!
+  makeId:          String!
+  make:         Make!
+}
+
+input NewVehicleType {
+  vehicleTypeId:    String!
+  vehicleTypeName:  String!
+  makeId:          String!
+}
+
+input UpdateVehicleType {
+  id: ID!
+  vehicleTypeId:    String
+  vehicleTypeName:  String
+  makeId:          String
+}
+
+type Query {
+  vehicleTypes: [VehicleType!]!
+  vehicleType(id: ID!): VehicleType
+  vehicleTypesByMakeId(makeId: String!): [VehicleType!]!
+}
+
+type Mutation {
+  createVehicleType(input: NewVehicleType!): VehicleType!
+  updateVehicleType(input: UpdateVehicleType!): VehicleType
+  deleteVehicleType(id: ID!): VehicleType
+}
+
+type Subscription {
+  vehicleTypeCreated: VehicleType
+}
